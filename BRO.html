@@ -1,172 +1,697 @@
+I'm showing this to you for free... Ang hirap nito i code kaya wag mong gayahin without the owner's permission plsssssss nakikita ka ni Lord hehe
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Chibi Pixel – Typing Mode</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bible Reading Plan 2026 - Mariel Dionisio</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
 
 <style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
 body{
-  margin:0;
-  background:#000;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
-  gap:140px;
-  overflow:hidden;
+background:linear-gradient(180deg,#1b102d,#2f1747,#4f2d73);
+font-family:'VT323', monospace;
+color:white;
+overflow-x:hidden;
+min-height:100vh;
+padding:20px;
 }
 
-/* BIGGER SCALE */
-.scale{
-  transform: scale(3.6);
-  image-rendering: pixelated;
+.pixel-bubble{
+position:fixed;
+width:14px;
+height:14px;
+background:#d7a8ff;
+pointer-events:none;
+animation:floatBubble 6s linear infinite;
+pixelated:true;
+opacity:0.4;
+z-index:0;
+box-shadow:
+0 0 0 2px #ffffff22,
+0 0 10px #c77dff;
 }
 
-/* IDLE + TYPING */
-.chibi{
-  animation: breathe 2.5s ease-in-out infinite;
+@keyframes floatBubble{
+0%{
+transform:translateY(100vh) rotate(0deg);
+opacity:0;
 }
-@keyframes breathe{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-3px);}
+30%{
+opacity:0.5;
 }
-
-/* PIXEL */
-.pixel{
-  width:5px;
-  height:5px;
-  float:left;
+100%{
+transform:translateY(-120vh) rotate(360deg);
+opacity:0;
+}
 }
 
-/* COLORS */
-.bg{background:transparent;}
-.out{background:#111;}
-.hair{background:#2a2a2a;}
-.skin{background:#f4cfbb;}
-.eye{background:#2b2b2b;}
-.eye.blink{animation: blink 4s infinite;}
-@keyframes blink{
-  0%,90%,100%{opacity:1;}
-  93%{opacity:0;}
+.container{
+max-width:1400px;
+margin:auto;
+position:relative;
+z-index:2;
 }
 
-.jacket{background:#e8dfcf;}
-.shirt{background:#ffffff;}
-.pants{background:#1e1e1e;}
-.shoe{background:#ffffff;}
-.clear{clear:both;}
-
-/* LAPTOP + TYPING */
-.laptop{
-  animation: typing 1.2s infinite;
-}
-@keyframes typing{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(1px);}
+.header{
+background:#3f235f;
+border:4px solid #c77dff;
+padding:25px;
+text-align:center;
+margin-bottom:20px;
+box-shadow:0 0 20px #c77dff;
 }
 
-.keyboard{
-  background:#999;
-  animation: keys 0.4s infinite alternate;
-}
-@keyframes keys{
-  from{filter:brightness(1);}
-  to{filter:brightness(1.4);}
-}
-
-.screen{background:#3cff7a;}
-.frame{background:#111;}
-
-/* BUBBLES */
-.bubbles{
-  position:absolute;
-  inset:0;
-  pointer-events:none;
+h1{
+font-family:'Press Start 2P', cursive;
+font-size:22px;
+line-height:1.8;
+color:#f5d0ff;
+margin-bottom:20px;
 }
 
-.bubble{
-  position:absolute;
-  width:22px;
-  height:22px;
-  background:#ffffff55;
-  border:2px solid #ffffffaa;
-  image-rendering: pixelated;
-  animation: rise 3.5s linear infinite;
+.subtitle{
+font-size:30px;
+margin-top:10px;
+color:#ffe6ff;
 }
 
-@keyframes rise{
-  0%{
-    transform:translateY(0);
-    opacity:0;
-  }
-  10%{opacity:1;}
-  100%{
-    transform:translateY(-180px);
-    opacity:0;
-  }
+.verse-box{
+background:#2a163f;
+border:3px solid #b983ff;
+padding:20px;
+margin-top:15px;
+font-size:24px;
+line-height:1.6;
+}
+
+.progress-section{
+background:#2a163f;
+border:4px solid #c77dff;
+padding:20px;
+margin-bottom:20px;
+}
+
+.progress-title{
+font-family:'Press Start 2P', cursive;
+font-size:14px;
+margin-bottom:15px;
+}
+
+.progress-bar{
+width:100%;
+height:35px;
+background:#14091f;
+border:3px solid #ffffff;
+overflow:hidden;
+position:relative;
+}
+
+.progress-fill{
+height:100%;
+width:0%;
+background:linear-gradient(90deg,#c77dff,#ffb3ff);
+transition:0.5s;
+}
+
+.progress-text{
+margin-top:10px;
+font-size:28px;
+}
+
+.tabs{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-bottom:20px;
+}
+
+.tab-btn{
+background:#542c7a;
+color:white;
+border:3px solid #d8a6ff;
+padding:12px 18px;
+font-family:'Press Start 2P', cursive;
+font-size:10px;
+cursor:pointer;
+transition:0.2s;
+}
+
+.tab-btn:hover,
+.tab-btn.active{
+background:#d59eff;
+color:#2f1747;
+transform:translateY(-3px);
+}
+
+.month-content{
+display:none;
+background:#2a163f;
+border:4px solid #c77dff;
+padding:20px;
+animation:fade 0.4s ease;
+}
+
+.month-content.active{
+display:block;
+}
+
+@keyframes fade{
+from{opacity:0; transform:translateY(10px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+.goal{
+background:#4c2970;
+padding:15px;
+border:3px dashed #f1c0ff;
+font-size:28px;
+margin-bottom:20px;
+}
+
+.chapter-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:12px;
+}
+
+.chapter-item{
+background:#43225f;
+border:3px solid #b983ff;
+padding:12px;
+display:flex;
+align-items:center;
+gap:10px;
+font-size:25px;
+cursor:pointer;
+transition:0.2s;
+position:relative;
+overflow:hidden;
+}
+
+.chapter-item:hover{
+transform:scale(1.03);
+background:#5a2f81;
+}
+
+.chapter-item.completed{
+background:#b983ff;
+color:#2b123d;
+}
+
+.chapter-item input{
+width:22px;
+height:22px;
+cursor:pointer;
+accent-color:#7b2cbf;
+}
+
+.pixel-surprise{
+position:fixed;
+font-size:50px;
+pointer-events:none;
+animation:pop 1s ease forwards;
+z-index:9999;
+}
+
+@keyframes pop{
+0%{
+transform:scale(0.2);
+opacity:0;
+}
+50%{
+transform:scale(1.4);
+opacity:1;
+}
+100%{
+transform:translateY(-100px);
+opacity:0;
+}
+}
+
+.footer{
+margin-top:30px;
+text-align:center;
+font-size:28px;
+padding:20px;
+}
+
+@media(max-width:700px){
+
+h1{
+font-size:14px;
+}
+
+.chapter-grid{
+grid-template-columns:1fr;
+}
+
+.tab-btn{
+width:100%;
+}
+
 }
 </style>
 </head>
-
 <body>
 
-<!-- FAST BIG BUBBLES -->
-<div class="bubbles">
-  <div class="bubble" style="left:10%; bottom:-30px; animation-delay:0s;"></div>
-  <div class="bubble" style="left:25%; bottom:-40px; animation-delay:1s;"></div>
-  <div class="bubble" style="left:40%; bottom:-35px; animation-delay:2s;"></div>
-  <div class="bubble" style="left:60%; bottom:-50px; animation-delay:0.5s;"></div>
-  <div class="bubble" style="left:75%; bottom:-30px; animation-delay:1.5s;"></div>
-  <div class="bubble" style="left:90%; bottom:-45px; animation-delay:2.5s;"></div>
+<div id="bubble-container"></div>
+
+<div class="container">
+
+<div class="header">
+<h1>BIBLE READING PLAN 2026</h1>
+<div class="subtitle">Owner: Mariel Dionisio ✨</div>
+<div class="subtitle">Date of Salvation: February 6, 2020 💜</div>
+
+<div class="verse-box">
+<b>Joshua 1:8</b><br>
+“This book of the law shall not depart out of thy mouth; but thou shalt meditate therein day and night...”
 </div>
 
-<!-- CHARACTER -->
-<div class="scale">
-<div class="chibi">
-
-<!-- HEAD -->
-<div class="pixel bg"></div><div class="pixel out"></div><div class="pixel hair"></div><div class="pixel hair"></div><div class="pixel hair"></div><div class="pixel hair"></div><div class="pixel hair"></div><div class="pixel hair"></div><div class="pixel hair"></div><div class="pixel hair"></div><div class="pixel out"></div><div class="pixel bg"></div><div class="clear"></div>
-
-<div class="pixel out"></div><div class="pixel hair"></div><div class="pixel hair"></div><div class="pixel hair"></div><div class="pixel hair"></div><div class="pixel hair"></div><div class="pixel hair"></div><div class="pixel hair"></div><div class="pixel hair"></div><div class="pixel hair"></div><div class="pixel hair"></div><div class="pixel out"></div><div class="clear"></div>
-
-<div class="pixel out"></div><div class="pixel hair"></div><div class="pixel skin"></div><div class="pixel skin"></div><div class="pixel skin"></div><div class="pixel skin"></div><div class="pixel skin"></div><div class="pixel skin"></div><div class="pixel skin"></div><div class="pixel skin"></div><div class="pixel hair"></div><div class="pixel out"></div><div class="clear"></div>
-
-<!-- FACE -->
-<div class="pixel out"></div><div class="pixel skin"></div><div class="pixel skin"></div>
-<div class="pixel eye blink"></div>
-<div class="pixel skin"></div><div class="pixel skin"></div><div class="pixel skin"></div><div class="pixel skin"></div>
-<div class="pixel skin"></div>
-<div class="pixel eye blink"></div>
-<div class="pixel skin"></div><div class="pixel out"></div><div class="clear"></div>
-
-<div class="pixel out"></div><div class="pixel skin"></div><div class="pixel skin"></div><div class="pixel skin"></div><div class="pixel skin"></div><div class="pixel skin"></div><div class="pixel skin"></div><div class="pixel skin"></div><div class="pixel skin"></div><div class="pixel skin"></div><div class="pixel skin"></div><div class="pixel out"></div><div class="clear"></div>
-
-<!-- BODY -->
-<div class="pixel bg"></div><div class="pixel jacket"></div><div class="pixel jacket"></div><div class="pixel jacket"></div><div class="pixel shirt"></div><div class="pixel shirt"></div><div class="pixel jacket"></div><div class="pixel jacket"></div><div class="pixel jacket"></div><div class="pixel bg"></div><div class="pixel bg"></div><div class="pixel bg"></div><div class="clear"></div>
-
-<div class="pixel bg"></div><div class="pixel jacket"></div><div class="pixel jacket"></div><div class="pixel jacket"></div><div class="pixel jacket"></div><div class="pixel jacket"></div><div class="pixel jacket"></div><div class="pixel jacket"></div><div class="pixel jacket"></div><div class="pixel bg"></div><div class="pixel bg"></div><div class="pixel bg"></div><div class="clear"></div>
-
-<div class="pixel bg"></div><div class="pixel pants"></div><div class="pixel pants"></div><div class="pixel pants"></div><div class="pixel bg"></div><div class="pixel bg"></div><div class="pixel pants"></div><div class="pixel pants"></div><div class="pixel pants"></div><div class="pixel bg"></div><div class="pixel bg"></div><div class="pixel bg"></div><div class="clear"></div>
-
-<div class="pixel bg"></div><div class="pixel shoe"></div><div class="pixel shoe"></div><div class="pixel bg"></div><div class="pixel bg"></div><div class="pixel bg"></div><div class="pixel shoe"></div><div class="pixel shoe"></div><div class="pixel bg"></div><div class="pixel bg"></div><div class="pixel bg"></div><div class="pixel bg"></div><div class="clear"></div>
-
+<div class="verse-box">
+<b>Matthew 4:4</b><br>
+“But he answered and said, It is written, Man shall not live by bread alone...”
 </div>
 </div>
 
-<!-- LAPTOP -->
-<div class="scale">
-<div class="laptop">
+<div class="progress-section">
+<div class="progress-title">OVERALL PROGRESS</div>
+<div class="progress-bar">
+<div class="progress-fill" id="progressFill"></div>
+</div>
+<div class="progress-text" id="progressText">0% Completed</div>
+</div>
 
-<div class="pixel bg"></div><div class="pixel frame"></div><div class="pixel frame"></div><div class="pixel frame"></div><div class="pixel frame"></div><div class="pixel frame"></div><div class="pixel bg"></div><div class="clear"></div>
+<div class="tabs" id="tabs"></div>
+<div id="content"></div>
 
-<div class="pixel frame"></div><div class="pixel screen"></div><div class="pixel screen"></div><div class="pixel screen"></div><div class="pixel screen"></div><div class="pixel frame"></div><div class="pixel bg"></div><div class="clear"></div>
-
-<div class="pixel frame"></div><div class="pixel screen"></div><div class="pixel screen"></div><div class="pixel screen"></div><div class="pixel screen"></div><div class="pixel frame"></div><div class="pixel bg"></div><div class="clear"></div>
-
-<div class="pixel bg"></div><div class="pixel keyboard"></div><div class="pixel keyboard"></div><div class="pixel keyboard"></div><div class="pixel keyboard"></div><div class="pixel keyboard"></div><div class="pixel bg"></div><div class="clear"></div>
+<div class="footer">
+💜 Keep going. One chapter at a time! ✨
+</div>
 
 </div>
+
+<script>
+
+const months = [
+{
+month:'January',
+goal:'Understand who Jesus is and why He came.',
+chapters:[
+...Array.from({length:21},(_,i)=>`John ${i+1}`),
+...Array.from({length:28},(_,i)=>`Matthew ${i+1}`)
+]
+},
+{
+month:'February',
+goal:'Learn Jesus\' actions and joyful Christian living.',
+chapters:[
+...Array.from({length:16},(_,i)=>`Mark ${i+1}`),
+...Array.from({length:24},(_,i)=>`Luke ${i+1}`),
+...Array.from({length:4},(_,i)=>`Philippians ${i+1}`)
+]
+},
+{
+month:'March',
+goal:'See the early church and salvation through faith.',
+chapters:[
+...Array.from({length:28},(_,i)=>`Acts ${i+1}`),
+...Array.from({length:16},(_,i)=>`Romans ${i+1}`),
+...Array.from({length:6},(_,i)=>`Galatians ${i+1}`)
+]
+},
+{
+month:'April',
+goal:'Grow in Christian living and wisdom.',
+chapters:[
+...Array.from({length:6},(_,i)=>`Ephesians ${i+1}`),
+...Array.from({length:4},(_,i)=>`Colossians ${i+1}`),
+...Array.from({length:5},(_,i)=>`James ${i+1}`),
+...Array.from({length:5},(_,i)=>`1 Peter ${i+1}`),
+...Array.from({length:5},(_,i)=>`1 Thessalonians ${i+1}`),
+...Array.from({length:3},(_,i)=>`2 Thessalonians ${i+1}`),
+...Array.from({length:5},(_,i)=>`1 John ${i+1}`),
+...Array.from({length:1},(_,i)=>`2 John ${i+1}`),
+...Array.from({length:1},(_,i)=>`3 John ${i+1}`),
+...Array.from({length:1},(_,i)=>`Jude ${i+1}`)
+]
+},
+{
+month:'May',
+goal:'Learn the beginnings of creation and God’s promises.',
+chapters:[
+...Array.from({length:50},(_,i)=>`Genesis ${i+1}`),
+...Array.from({length:40},(_,i)=>`Exodus ${i+1}`)
+]
+},
+{
+month:'June',
+goal:'Understand God’s laws and Israel’s journey.',
+chapters:[
+...Array.from({length:27},(_,i)=>`Leviticus ${i+1}`),
+...Array.from({length:36},(_,i)=>`Numbers ${i+1}`),
+...Array.from({length:34},(_,i)=>`Deuteronomy ${i+1}`)
+]
+},
+{
+month:'July',
+goal:'See God’s faithfulness in Israel’s history.',
+chapters:[
+...Array.from({length:24},(_,i)=>`Joshua ${i+1}`),
+...Array.from({length:21},(_,i)=>`Judges ${i+1}`),
+...Array.from({length:4},(_,i)=>`Ruth ${i+1}`),
+...Array.from({length:31},(_,i)=>`1 Samuel ${i+1}`),
+...Array.from({length:24},(_,i)=>`2 Samuel ${i+1}`)
+]
+},
+{
+month:'August',
+goal:'Learn from the kings of Israel and Judah.',
+chapters:[
+...Array.from({length:22},(_,i)=>`1 Kings ${i+1}`),
+...Array.from({length:25},(_,i)=>`2 Kings ${i+1}`),
+...Array.from({length:29},(_,i)=>`1 Chronicles ${i+1}`),
+...Array.from({length:36},(_,i)=>`2 Chronicles ${i+1}`)
+]
+},
+{
+month:'September',
+goal:'See restoration, courage, and wisdom.',
+chapters:[
+...Array.from({length:10},(_,i)=>`Ezra ${i+1}`),
+...Array.from({length:13},(_,i)=>`Nehemiah ${i+1}`),
+...Array.from({length:10},(_,i)=>`Esther ${i+1}`),
+...Array.from({length:42},(_,i)=>`Job ${i+1}`),
+...Array.from({length:75},(_,i)=>`Psalms ${i+1}`)
+]
+},
+{
+month:'October',
+goal:'Continue worship and gain wisdom for daily life.',
+chapters:[
+...Array.from({length:75},(_,i)=>`Psalms ${i+76}`),
+...Array.from({length:31},(_,i)=>`Proverbs ${i+1}`),
+...Array.from({length:12},(_,i)=>`Ecclesiastes ${i+1}`),
+...Array.from({length:8},(_,i)=>`Song of Solomon ${i+1}`)
+]
+},
+{
+month:'November',
+goal:'Hear God’s warnings, promises, and prophecies.',
+chapters:[
+...Array.from({length:66},(_,i)=>`Isaiah ${i+1}`),
+...Array.from({length:52},(_,i)=>`Jeremiah ${i+1}`),
+...Array.from({length:5},(_,i)=>`Lamentations ${i+1}`),
+...Array.from({length:48},(_,i)=>`Ezekiel ${i+1}`),
+...Array.from({length:12},(_,i)=>`Daniel ${i+1}`)
+]
+},
+{
+month:'December',
+goal:'Finish the prophets and end with hope in Revelation.',
+chapters:[
+...Array.from({length:14},(_,i)=>`Hosea ${i+1}`),
+...Array.from({length:3},(_,i)=>`Joel ${i+1}`),
+...Array.from({length:9},(_,i)=>`Amos ${i+1}`),
+...Array.from({length:1},(_,i)=>`Obadiah ${i+1}`),
+...Array.from({length:4},(_,i)=>`Jonah ${i+1}`),
+...Array.from({length:7},(_,i)=>`Micah ${i+1}`),
+...Array.from({length:3},(_,i)=>`Nahum ${i+1}`),
+...Array.from({length:3},(_,i)=>`Habakkuk ${i+1}`),
+...Array.from({length:3},(_,i)=>`Zephaniah ${i+1}`),
+...Array.from({length:2},(_,i)=>`Haggai ${i+1}`),
+...Array.from({length:14},(_,i)=>`Zechariah ${i+1}`),
+...Array.from({length:4},(_,i)=>`Malachi ${i+1}`),
+...Array.from({length:13},(_,i)=>`Hebrews ${i+1}`),
+...Array.from({length:22},(_,i)=>`Revelation ${i+1}`)
+]
+}
+];
+
+const tabs = document.getElementById('tabs');
+const content = document.getElementById('content');
+
+months.forEach((monthData,index)=>{
+
+const btn = document.createElement('button');
+btn.className='tab-btn';
+btn.textContent=monthData.month;
+if(index===0) btn.classList.add('active');
+
+tabs.appendChild(btn);
+
+const section = document.createElement('div');
+section.className='month-content';
+if(index===0) section.classList.add('active');
+
+section.innerHTML=`
+<div class="goal">🎯 Goal: ${monthData.goal}</div>
+<div class="chapter-grid">
+${monthData.chapters.map(ch=>`
+<label class="chapter-item">
+<input type="checkbox" data-chapter="${ch}">
+<span>${ch}</span>
+</label>
+`).join('')}
 </div>
+`;
+
+content.appendChild(section);
+
+btn.addEventListener('click',()=>{
+
+document.querySelectorAll('.tab-btn').forEach(t=>t.classList.remove('active'));
+document.querySelectorAll('.month-content').forEach(c=>c.classList.remove('active'));
+
+btn.classList.add('active');
+section.classList.add('active');
+
+});
+
+});
+
+const surprises=['✨','💜','📖','⭐','☁️','🫧','🌸','🎉','🦋'];
+
+function createSurprise(x,y){
+
+const surprise=document.createElement('div');
+surprise.className='pixel-surprise';
+surprise.innerText=surprises[Math.floor(Math.random()*surprises.length)];
+surprise.style.left=x+'px';
+surprise.style.top=y+'px';
+document.body.appendChild(surprise);
+
+setTimeout(()=>{
+surprise.remove();
+},1000);
+
+}
+
+function updateProgress(){
+
+const all=document.querySelectorAll('input[type="checkbox"]');
+const checked=document.querySelectorAll('input[type="checkbox"]:checked');
+
+const percent=Math.floor((checked.length/all.length)*100);
+
+document.getElementById('progressFill').style.width=percent+'%';
+document.getElementById('progressText').innerText=`${checked.length} / ${all.length} Chapters Completed (${percent}%)`;
+
+localStorage.setItem('bibleProgress',JSON.stringify([...checked].map(c=>c.dataset.chapter)));
+
+}
+
+function loadProgress(){
+
+const saved=JSON.parse(localStorage.getItem('bibleProgress')) || [];
+
+saved.forEach(chapter=>{
+const box=document.querySelector(`[data-chapter="${chapter}"]`);
+if(box){
+box.checked=true;
+box.parentElement.classList.add('completed');
+}
+});
+
+updateProgress();
+
+}
+
+content.addEventListener('change',(e)=>{
+
+if(e.target.matches('input[type="checkbox"]')){
+
+const item=e.target.parentElement;
+
+if(e.target.checked){
+item.classList.add('completed');
+}
+else{
+item.classList.remove('completed');
+}
+
+const rect = e.target.getBoundingClientRect();
+const x = rect.left + rect.width / 2;
+const y = rect.top + rect.height / 2;
+
+createSurprise(x,y);
+createBubbleExplosion(x,y);
+createPixelRain(x,y);
+createSparkles(x,y);
+updateProgress();
+
+}
+
+});
+
+function createFloatingBubbles(){
+
+setInterval(()=>{
+
+const bubble=document.createElement('div');
+bubble.className='pixel-bubble';
+bubble.style.left=Math.random()*100+'vw';
+bubble.style.animationDuration=(Math.random()*4+3)+'s';
+bubble.style.width=(Math.random()*12+8)+'px';
+bubble.style.height=bubble.style.width;
+
+const container=document.getElementById('bubble-container');
+container.appendChild(bubble);
+
+setTimeout(()=>{
+bubble.remove();
+},7000);
+
+},300);
+
+}
+
+function createBubbleExplosion(x,y){
+
+for(let i=0;i<10;i++){
+
+const bubble=document.createElement('div');
+bubble.className='pixel-bubble';
+bubble.style.left=x+'px';
+bubble.style.top=y+'px';
+bubble.style.position='fixed';
+
+const randomX=(Math.random()-0.5)*200;
+const randomY=(Math.random()-0.5)*200;
+
+bubble.animate([
+{transform:'translate(0,0)',opacity:1},
+{transform:`translate(${randomX}px,${randomY}px)`,opacity:0}
+],{
+duration:1000,
+easing:'ease-out'
+});
+
+document.body.appendChild(bubble);
+
+setTimeout(()=>bubble.remove(),1000);
+
+}
+
+}
+
+loadProgress();
+createFloatingBubbles();
+
+function createPixelRain(x,y){
+
+for(let i=0;i<20;i++){
+
+const pixel=document.createElement('div');
+pixel.style.position='fixed';
+pixel.style.left=x+'px';
+pixel.style.top=y+'px';
+pixel.style.width='10px';
+pixel.style.height='10px';
+pixel.style.background=[
+'#ffccff','#d8b4fe','#c77dff','#ffffff','#f9a8d4'
+][Math.floor(Math.random()*5)];
+pixel.style.pointerEvents='none';
+pixel.style.zIndex='9999';
+pixel.style.boxShadow='0 0 10px white';
+
+const moveX=(Math.random()-0.5)*300;
+const moveY=(Math.random()-0.5)*300;
+
+pixel.animate([
+{
+transform:'translate(0px,0px) scale(1)',
+opacity:1
+},
+{
+transform:`translate(${moveX}px,${moveY}px) scale(0) rotate(360deg)`,
+opacity:0
+}
+],{
+duration:1200,
+easing:'ease-out'
+});
+
+document.body.appendChild(pixel);
+
+setTimeout(()=>{
+pixel.remove();
+},1200);
+
+}
+
+}
+
+function createSparkles(x,y){
+
+const emojis=['✨','💜','⭐','🌸','🫧','☁️'];
+
+for(let i=0;i<8;i++){
+
+const sparkle=document.createElement('div');
+sparkle.innerText=emojis[Math.floor(Math.random()*emojis.length)];
+sparkle.style.position='fixed';
+sparkle.style.left=x+'px';
+sparkle.style.top=y+'px';
+sparkle.style.fontSize='24px';
+sparkle.style.pointerEvents='none';
+sparkle.style.zIndex='9999';
+
+const moveX=(Math.random()-0.5)*250;
+const moveY=(Math.random()-0.5)*250;
+
+sparkle.animate([
+{
+transform:'translate(0px,0px) scale(0.5)',
+opacity:1
+},
+{
+transform:`translate(${moveX}px,${moveY}px) scale(1.8)`,
+opacity:0
+}
+],{
+duration:1000,
+easing:'ease-out'
+});
+
+document.body.appendChild(sparkle);
+
+setTimeout(()=>{
+sparkle.remove();
+},1000);
+
+}
+
+}
+
+</script>
 
 </body>
 </html>
